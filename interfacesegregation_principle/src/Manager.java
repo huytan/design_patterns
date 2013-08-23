@@ -1,4 +1,5 @@
 import util.IWorkable;
+import util.IWorker;
 
 public class Manager {
 	IWorkable worker;

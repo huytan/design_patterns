@@ -1,16 +1,17 @@
-import util.IWorker;
+import util.IFeeable;
+import util.IWorkable;
 
-public class Worker implements IWorker {
+public class Worker implements IFeeable, IWorkable {
 
 	@Override
 	public void eat() {
 		// TODO Auto-generated method stub
-		System.out.print("I am eating");
+		System.out.print("I am eating as worker");
 	}
 
 	@Override
 	public void work() {
 		// TODO Auto-generated method stub
-		System.out.print("I am working");
+		System.out.print("I am working as worker");
 	}
 }
