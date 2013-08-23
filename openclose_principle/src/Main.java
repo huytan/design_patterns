@@ -30,7 +30,7 @@ public class Main {
 			gp.drawShape(new Cricle());
 			break;
 		default:
-			System.out.println("choose a shape");
+			System.out.println("Error");
 			break;
 		}
 	}
