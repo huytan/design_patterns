@@ -1,3 +1,5 @@
+import util.IWorker;
+
 
 public class SuperWorker implements IWorker {
 

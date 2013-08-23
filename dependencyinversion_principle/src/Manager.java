@@ -1,3 +1,5 @@
+import util.IWorker;
+
 public class Manager {
 	IWorker m_worker;
 
