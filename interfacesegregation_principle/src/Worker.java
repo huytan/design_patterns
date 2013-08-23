@@ -1,7 +1,8 @@
 import util.IFeeable;
 import util.IWorkable;
 
-public class Worker implements IFeeable, IWorkable {
+
+public class Worker implements IWorkable,IFeeable {
 
 	@Override
 	public void eat() {
