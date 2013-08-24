@@ -1,0 +1,2 @@
+Here we can see an example of Rectangle with a precondition about only positive values in
+constructor and methods, and a subclass where this does not happen.
