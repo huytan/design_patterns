@@ -1,0 +1,2 @@
+issues about equals with a subclass that add a new field (color) but look at the problem of the lack of reflexivity
+of the equals

@@ -1,0 +1,7 @@
+Here we solve the problem of exercise 2 because there is an "immutable" rectangle interface that will be implemented
+both by rectangle and square. However the immutable rectangle does not have any setter.
+Then we can check for the equality if the parameters belongs to an instance of immutableRectangle that is
+implemented by rectangle and square that are by themselves different classes, with different "set" methods.
+
+In this way we can, for example, put different "immutablerectangle" to collections.
+

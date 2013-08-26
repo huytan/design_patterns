@@ -1,0 +1,4 @@
+given that rectangles and square cannot be one subclass of the other, then we provide different classes,
+(defining them  by interfaces).
+However in this way we cannot definetively make "equal" a rectangle and a square that are in fact equals,
+unless we use a kind of rtti (run time type information), that will violate the o.c.p. principle.
