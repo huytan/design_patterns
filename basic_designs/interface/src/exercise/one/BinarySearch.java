@@ -1,6 +1,5 @@
 package exercise.one;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class BinarySearch implements ISearch {
