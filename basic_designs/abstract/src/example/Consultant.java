@@ -1,9 +1,9 @@
 package example;
 
 public class Consultant extends AbsEmployee {
-
-	public Consultant(String empName, String empID) {
-		super(empName, empID);
+	
+	public Consultant(String empName, String empID,String department) {
+		super(empName, empID,department);
 	}
 
 	@Override

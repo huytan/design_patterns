@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true">  
   <class id="1" language="java" name="example.SalesRep" project="abstract" file="/abstract/src/example/SalesRep.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position x="129" y="265" width="174" height="99"/>    
+    <position x="271" y="271" width="174" height="99"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,38 +12,47 @@
   </class>  
   <class id="2" language="java" name="example.Consultant" project="abstract" 
     file="/abstract/src/example/Consultant.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position x="343" y="265" width="174" height="99"/>    
+    <position x="485" y="271" width="175" height="99"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="example.AbsEmployee" project="abstract" 
-    file="/abstract/src/example/AbsEmployee.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position x="129" y="18" width="179" height="207"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
-      visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="4" language="java" name="example.FileUtil" project="abstract" file="/abstract/src/example/FileUtil.java" 
+  <class id="3" language="java" name="example.MainApp" project="abstract" file="/abstract/src/example/MainApp.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position x="348" y="18" width="250" height="99"/>    
+    <position x="225" y="-12" width="113" height="99"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <generalization id="5">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="3"/>  
-  </generalization>  
+  <class id="4" language="java" name="example.AbsEmployee" project="abstract" 
+    file="/abstract/src/example/AbsEmployee.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position x="378" y="-12" width="190" height="243"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="example.FileUtil" project="abstract" file="/abstract/src/example/FileUtil.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position x="608" y="-12" width="168" height="135"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
   <generalization id="6">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </generalization>  
+  <generalization id="7">    
     <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="3"/>  
+    <end type="TARGET" refId="4"/>  
   </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     accessors="true" visibility="true">    
