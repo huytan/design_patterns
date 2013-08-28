@@ -1,4 +1,4 @@
-package example;
+package exercise.three;
 
 import java.io.*;
 import java.util.*;

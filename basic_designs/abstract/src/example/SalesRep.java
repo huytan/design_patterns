@@ -1,8 +1,8 @@
 package example;
 public class SalesRep extends Employee {
 
-	public SalesRep(String empName, String empID,String department) {
-		super(empName, empID,department);
+	public SalesRep(String empName, String empID) {
+		super(empName, empID);
 
 	}
 

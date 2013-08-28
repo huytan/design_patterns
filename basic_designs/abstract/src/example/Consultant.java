@@ -2,8 +2,8 @@ package example;
 
 public class Consultant extends Employee {
 	
-	public Consultant(String empName, String empID,String department) {
-		super(empName, empID,department);
+	public Consultant(String empName, String empID ) {
+		super(empName, empID);
 	}
 
 	@Override

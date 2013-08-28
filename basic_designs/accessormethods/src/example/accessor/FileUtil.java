@@ -1,4 +1,4 @@
-package example;
+package example.accessor;
 
 import java.io.*;
 import java.util.*;

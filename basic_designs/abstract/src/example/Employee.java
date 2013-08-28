@@ -5,21 +5,15 @@ import java.util.Date;
 public abstract class Employee {
 	String name;
 	String ID;
-	String department;
 
 	// invariable parts
-	public Employee(String empName, String empID, String empDepartment) {
+	public Employee(String empName, String empID) {
 		this.name = empName;
 		this.ID = empID;
-		this.department = empDepartment;
 	}
 
 	public String getName() {
 		return name;
-	}
-
-	public String getDepartment() {
-		return department;
 	}
 
 	public String getID() {
@@ -28,14 +22,16 @@ public abstract class Employee {
 
 	@Override
 	public String toString() {
-		String str = "Emp Name:: " + getName() + " EmpID:: " + getID() + " Emp Department:: "+getDepartment() +" Date:: " +new Date().getDate()+"/"+new Date().getMonth();
+		String str = "Emp Name:: " + getName() + " EmpID:: " + getID()
+				+ " Date:: " + new Date().getDate() + "/"
+				+ new Date().getMonth();
 		return str;
 	}
 
 	public void save() {
 		// TODO Auto-generated method stub
 		FileUtil futil = new FileUtil();
-		futil.writeToFile("emp.txt", this.toString());
+		futil.writeToFile("emp.txt", this.toString(), true, true);
 	}
 
 	// variable part of the behavior

@@ -1,4 +1,4 @@
-package example;
+package example.direct;
 
 import java.io.*;
 import java.util.*;
