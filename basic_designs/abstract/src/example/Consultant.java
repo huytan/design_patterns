@@ -1,6 +1,6 @@
 package example;
 
-public class Consultant extends AbsEmployee {
+public class Consultant extends Employee {
 	
 	public Consultant(String empName, String empID,String department) {
 		super(empName, empID,department);

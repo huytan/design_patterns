@@ -1,5 +1,5 @@
 package example;
-public class SalesRep extends AbsEmployee {
+public class SalesRep extends Employee {
 
 	public SalesRep(String empName, String empID,String department) {
 		super(empName, empID,department);

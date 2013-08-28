@@ -2,13 +2,13 @@ package example;
 
 import java.util.Date;
 
-public abstract class AbsEmployee {
+public abstract class Employee {
 	String name;
 	String ID;
 	String department;
 
 	// invariable parts
-	public AbsEmployee(String empName, String empID, String empDepartment) {
+	public Employee(String empName, String empID, String empDepartment) {
 		this.name = empName;
 		this.ID = empID;
 		this.department = empDepartment;
