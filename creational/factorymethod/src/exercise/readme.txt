@@ -1,0 +1,2 @@
+1. Add a new logger DBLogger that logs messages to a database.
+2. Create a subclass of the LoggerFactory class and override the getLogger implementation to implement a different class selection criterion.

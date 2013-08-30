@@ -9,7 +9,7 @@ public class LoggerFactory {
 			p.load(ClassLoader.getSystemResourceAsStream("Logger.properties"));
 			String fileLoggingValue = p.getProperty("FileLogging");
 			if (fileLoggingValue.equalsIgnoreCase("ON") == true)
-				return true;
+				return true;	
 			else
 				return false;
 		} catch (IOException e) {
