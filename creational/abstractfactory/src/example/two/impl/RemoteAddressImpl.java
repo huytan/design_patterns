@@ -17,15 +17,27 @@ public class RemoteAddressImpl extends UnicastRemoteObject implements IAddress {
 		this.state = state;
 	}
 
+//	public RemoteAddressImpl() throws RemoteException {
+//		// TODO Auto-generated constructor stub
+//	}
+
 	@Override
 	public boolean isValid() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean save() {
 		// TODO Auto-generated method stub
+		String dataLine = "Address:" + getAddress() + " City: " + getCity()
+				+ " State: " + getState();
+		if (isValid()) {
+			FileUtil fUtil = new FileUtil();
+			return fUtil.writeToFile(ContantDataManager.REMOTE_ADDRESS_FILE,
+					dataLine, true, true);
+
+		}
 		return false;
 	}
 

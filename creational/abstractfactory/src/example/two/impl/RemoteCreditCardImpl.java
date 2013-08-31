@@ -18,15 +18,27 @@ public class RemoteCreditCardImpl extends UnicastRemoteObject implements
 		this.cardExpDate = cardExpDate;
 	}
 
+//	public RemoteCreditCardImpl() throws RemoteException {
+//		// TODO Auto-generated constructor stub
+//	}
+
 	@Override
 	public boolean isValid() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean save() {
 		// TODO Auto-generated method stub
+		String dataLine = "Card Type:" + getCardType() + " Card Number: "
+				+ getCardNumber() + " Card ExpDate: " + getCardExpDate();
+		if (isValid()) {
+			FileUtil fUtil = new FileUtil();
+			return fUtil.writeToFile(ContantDataManager.REMOTE_CREDIT_FILE,
+					dataLine, true, true);
+
+		}
 		return false;
 	}
 
@@ -51,19 +63,19 @@ public class RemoteCreditCardImpl extends UnicastRemoteObject implements
 	@Override
 	public void setCardType(String cardType) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setCardNumber(String cardNumber) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setCardExpDate(String cardExpDate) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

@@ -27,8 +27,8 @@ public class LocalCreditCardImpl implements ICreditCard {
 	@Override
 	public boolean save() {
 		// TODO Auto-generated method stub
-		String dataLine = "Card Type:" + getCardType()+" Card Number: "+getCardNumber() + " Card ExpDate: "
-				+ getCardExpDate();
+		String dataLine = "Card Type:" + getCardType() + " Card Number: "
+				+ getCardNumber() + " Card ExpDate: " + getCardExpDate();
 		if (isValid()) {
 			FileUtil fUtil = new FileUtil();
 			return fUtil.writeToFile(ContantDataManager.CREDIT_FILE, dataLine,

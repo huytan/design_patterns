@@ -42,6 +42,7 @@ public class CustomerUI extends JFrame {
 	private JTextField txtCardType;
 	private JButton btnSave;
 	private JButton btnExit;
+	private ServerUI serverUI;
 
 	/**
 	 * Launch the application.
@@ -57,6 +58,11 @@ public class CustomerUI extends JFrame {
 				}
 			}
 		});
+	}
+
+	public CustomerUI(ServerUI serverUI) {
+		// TODO Auto-generated constructor stub
+		this.serverUI = serverUI;
 	}
 
 	/**
@@ -171,10 +177,17 @@ public class CustomerUI extends JFrame {
 		btnExit.setText(CustomerUI.EXIT);
 		contentPane.add(btnExit);
 
-		ButtonHandler buttonHandler = new ButtonHandler(this);
+		ButtonHandlerClient buttonHandler = new ButtonHandlerClient(this);
 		btnSave.addActionListener(buttonHandler);
-		btnExit.addActionListener(new ButtonHandler());
+		btnExit.addActionListener(new ButtonHandlerClient());
 
+	}
+
+	public ServerUI getServerUI() {
+		if (serverUI == null) {
+			serverUI = new ServerUI();
+		}
+		return serverUI;
 	}
 
 	public String getCbbConnectTo() {
@@ -214,15 +227,21 @@ public class CustomerUI extends JFrame {
 	}
 }// end class
 
-class ButtonHandler implements ActionListener {
+class ButtonHandlerClient implements ActionListener {
 	CustomerUI customerUI;
+	ServerUI serverUI;
 
-	public ButtonHandler(CustomerUI customerUI) {
+	public ButtonHandlerClient(CustomerUI customerUI) {
 		// TODO Auto-generated constructor stub
 		this.customerUI = customerUI;
 	}
 
-	public ButtonHandler() {
+	public ButtonHandlerClient(ServerUI serverUI) {
+		// TODO Auto-generated constructor stub
+		this.serverUI = serverUI;
+	}
+
+	public ButtonHandlerClient() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -235,30 +254,41 @@ class ButtonHandler implements ActionListener {
 		if (e.getActionCommand().equals(CustomerUI.SAVE)) {
 			String vhConnectTo = customerUI.getCbbConnectTo();
 			ICustomerFactory factory = CustomerUtil.getCustFactory(vhConnectTo);
-			if (vhConnectTo.equalsIgnoreCase(CustomerUI.LOCAL)) {
-				IAccount account = factory.getAccount();
+			IAccount account = null;
+			IAddress address = null;
+			ICreditCard credit = null;
+			try {
+				account = factory.getAccount();
 				account.setFirstName(customerUI.getTxtFirstName());
 				account.setLastName(customerUI.getTxtLastName());
-				IAddress address = factory.getAddress();
+				address = factory.getAddress();
 				address.setAddress(customerUI.getTxtAddress());
 				address.setCity(customerUI.getTxtCity());
 				address.setState(customerUI.getTxtState());
-				ICreditCard credit = factory.getCreditCard();
+				credit = factory.getCreditCard();
 				credit.setCardType(customerUI.getTxtCardType());
 				credit.setCardNumber(customerUI.getTxtCardNumber());
 				credit.setCardExpDate(customerUI.getTxtCardExpdate());
-
+			} catch (Exception e1) {
+				// TODO: handle exception
+				e1.printStackTrace();
+			}
+			if (vhConnectTo.equalsIgnoreCase(CustomerUI.LOCAL)) {
 				try {
+
 					if (account.save() && address.save() && credit.save()) {
-						System.out.println("OK");
+						System.out.println("Local OK");
 					}
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 
+			} else if (vhConnectTo.equalsIgnoreCase(CustomerUI.REMOTE)) {
+				// customerUI.getServerUI().setVisible(true);
+				new ServerUI(CustomerUI.REMOTE).setVisible(true);
+
 			}
 		}
 	}
-
 }

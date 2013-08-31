@@ -28,9 +28,9 @@ public class LocalAccountImpl implements IAccount {
 				+ getLastName();
 		if (isValid()) {
 			FileUtil fUtil = new FileUtil();
-		return	fUtil.writeToFile(ContantDataManager.ACOUNT_FILE, dataLine, true,
-					true);
-			
+			return fUtil.writeToFile(ContantDataManager.ACOUNT_FILE, dataLine,
+					true, true);
+
 		}
 		return false;
 	}

@@ -9,6 +9,10 @@ public class RemoteAccountImpl extends UnicastRemoteObject implements IAccount {
 	private String firstName;
 	private String lastName;
 
+//	public RemoteAccountImpl() throws RemoteException {
+//		// TODO Auto-generated constructor stub
+//	}
+
 	public RemoteAccountImpl(String firstName, String lastName)
 			throws RemoteException {
 		this.firstName = firstName;
@@ -18,12 +22,19 @@ public class RemoteAccountImpl extends UnicastRemoteObject implements IAccount {
 	@Override
 	public boolean isValid() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean save() {
-		// TODO Auto-generated method stub
+		String dataLine = "FirstName" + getFirstName() + " LastName: "
+				+ getLastName();
+		if (isValid()) {
+			FileUtil fUtil = new FileUtil();
+			return fUtil.writeToFile(ContantDataManager.ACOUNT_FILE, dataLine,
+					true, true);
+
+		}
 		return false;
 	}
 
@@ -42,13 +53,13 @@ public class RemoteAccountImpl extends UnicastRemoteObject implements IAccount {
 	@Override
 	public void setFirstName(String firstName) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setLastName(String lastName) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

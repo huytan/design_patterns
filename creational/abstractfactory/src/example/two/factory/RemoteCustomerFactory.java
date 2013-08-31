@@ -1,8 +1,13 @@
 package example.two.factory;
 
+import java.rmi.RemoteException;
+
 import example.two.IAccount;
 import example.two.IAddress;
 import example.two.ICreditCard;
+import example.two.impl.RemoteAccountImpl;
+import example.two.impl.RemoteAddressImpl;
+import example.two.impl.RemoteCreditCardImpl;
 
 public class RemoteCustomerFactory implements ICustomerFactory {
 	private static RemoteCustomerFactory instance;
@@ -19,19 +24,19 @@ public class RemoteCustomerFactory implements ICustomerFactory {
 	}
 
 	@Override
-	public IAddress getAddress() {
+	public IAddress getAddress() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public IAccount getAccount() {
+	public IAccount getAccount() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ICreditCard getCreditCard() {
+	public ICreditCard getCreditCard() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
