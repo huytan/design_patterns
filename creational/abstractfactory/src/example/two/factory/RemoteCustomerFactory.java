@@ -10,6 +10,7 @@ import example.two.impl.RemoteAddressImpl;
 import example.two.impl.RemoteCreditCardImpl;
 
 public class RemoteCustomerFactory implements ICustomerFactory {
+
 	private static RemoteCustomerFactory instance;
 
 	private RemoteCustomerFactory() {
@@ -26,19 +27,19 @@ public class RemoteCustomerFactory implements ICustomerFactory {
 	@Override
 	public IAddress getAddress() throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return new RemoteAddressImpl();
 	}
 
 	@Override
 	public IAccount getAccount() throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return new RemoteAccountImpl();
 	}
 
 	@Override
 	public ICreditCard getCreditCard() throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return new RemoteCreditCardImpl();
 	}
 
 }

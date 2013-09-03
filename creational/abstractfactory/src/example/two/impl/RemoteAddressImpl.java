@@ -17,9 +17,9 @@ public class RemoteAddressImpl extends UnicastRemoteObject implements IAddress {
 		this.state = state;
 	}
 
-//	public RemoteAddressImpl() throws RemoteException {
-//		// TODO Auto-generated constructor stub
-//	}
+	public RemoteAddressImpl() throws RemoteException {
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public boolean isValid() {
@@ -62,19 +62,19 @@ public class RemoteAddressImpl extends UnicastRemoteObject implements IAddress {
 	@Override
 	public void setAddress(String address) {
 		// TODO Auto-generated method stub
-
+		this.address = address;
 	}
 
 	@Override
 	public void setState(String state) {
 		// TODO Auto-generated method stub
-
+		this.state = state;
 	}
 
 	@Override
 	public void setCity(String city) {
 		// TODO Auto-generated method stub
-
+		this.city = city;
 	}
 
 }

@@ -26,7 +26,7 @@ public class CustomerUI extends JFrame {
 	public static final String EXIT = "Exit";
 
 	private JPanel contentPane;
-	private JComboBox cbbConnectTo;
+	private JComboBox<String> cbbConnectTo;
 	private JTextField txtFirstName;
 	private JTextField txtLastName;
 	private JTextField txtAddress;
@@ -286,8 +286,7 @@ class ButtonHandlerClient implements ActionListener {
 
 			} else if (vhConnectTo.equalsIgnoreCase(CustomerUI.REMOTE)) {
 				// customerUI.getServerUI().setVisible(true);
-				new ServerUI(CustomerUI.REMOTE).setVisible(true);
-
+				new ServerUI().setVisible(true);
 			}
 		}
 	}

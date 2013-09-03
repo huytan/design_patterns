@@ -9,14 +9,14 @@ public class RemoteAccountImpl extends UnicastRemoteObject implements IAccount {
 	private String firstName;
 	private String lastName;
 
-//	public RemoteAccountImpl() throws RemoteException {
-//		// TODO Auto-generated constructor stub
-//	}
-
 	public RemoteAccountImpl(String firstName, String lastName)
 			throws RemoteException {
 		this.firstName = firstName;
 		this.lastName = lastName;
+	}
+
+	public RemoteAccountImpl() throws RemoteException {
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -53,13 +53,14 @@ public class RemoteAccountImpl extends UnicastRemoteObject implements IAccount {
 	@Override
 	public void setFirstName(String firstName) {
 		// TODO Auto-generated method stub
+		this.firstName = firstName;
 
 	}
 
 	@Override
 	public void setLastName(String lastName) {
 		// TODO Auto-generated method stub
-
+		this.lastName = lastName;
 	}
 
 }

@@ -24,13 +24,13 @@ public class ServerUI extends JFrame {
 
 	private JPanel contentPane;
 	private DefaultListModel<String> dlm;
-	private JList lst;
+	private JList<String> lst;
 	JLabel lblMessage;
 	JButton btnStart;
 	JButton btnStop;
 	private JButton btnExit;
 	Context ctx = null;
-	private String mode = null;
+	private static String mode = null;
 	public CustomerUI customerUI;
 
 	/**
@@ -84,22 +84,12 @@ public class ServerUI extends JFrame {
 		lblMessage = new JLabel("");
 		lblMessage.setBounds(20, 228, 333, 14);
 		contentPane.add(lblMessage);
-
+		DislplayInfos("server stop...");
 		ButtonHandlerServer handlerServer = new ButtonHandlerServer(this, mode);
 
 		btnExit.addActionListener(new ButtonHandlerServer());
 		btnStart.addActionListener(handlerServer);
 		btnStop.addActionListener(handlerServer);
-	}
-
-	public ServerUI(CustomerUI customerUI) {
-		// TODO Auto-generated constructor stub
-		this.customerUI = customerUI;
-	}
-
-	public ServerUI(String remote) {
-		// TODO Auto-generated constructor stub
-		mode = remote;
 	}
 
 	public void DislplayInfos(String msg) {
@@ -127,10 +117,9 @@ class ButtonHandlerServer implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		String vhConnectTo = mode;
-
-		ICustomerFactory factory = CustomerUtil
-				.getCustFactory(vhConnectTo);
+		// String vhConnectTo = mode;
+		//
+		// ICustomerFactory factory = CustomerUtil.getCustFactory(vhConnectTo);
 		if (e.getActionCommand().equals(ServerUI.START)) {
 
 			serverUI.lblMessage.setText("Calculator server is running…");
@@ -144,8 +133,8 @@ class ButtonHandlerServer implements ActionListener {
 			serverUI.btnStart.setEnabled(true);
 			serverUI.lblMessage.setText("Calculator server is stopped…");
 
-		} else {
-			System.exit(1);
+		} else if (e.getActionCommand().equals(ServerUI.EXIT)) {
+			System.exit(0);
 		}
 	}
 }

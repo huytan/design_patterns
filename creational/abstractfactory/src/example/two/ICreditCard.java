@@ -1,20 +1,21 @@
 package example.two;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 
 public interface ICreditCard extends Remote {
 	public boolean isValid() throws Exception;
 
-	public boolean save() throws Exception;
+	public boolean save() throws RemoteException;
 
-	public String getCardType();
+	public String getCardType() throws RemoteException;
 
-	public String getCardNumber();
+	public String getCardNumber() throws RemoteException;
 
-	public String getCardExpDate();
-	public void setCardType(String cardType);
+	public String getCardExpDate() throws RemoteException;
+	public void setCardType(String cardType) throws RemoteException;
 
-	public void setCardNumber(String cardNumber);
+	public void setCardNumber(String cardNumber) throws RemoteException;
 
-	public void setCardExpDate(String cardExpDate);
+	public void setCardExpDate(String cardExpDate) throws RemoteException;
 }
