@@ -1,6 +1,5 @@
 package exercise.factory;
 
-import example.two.factory.ICustomerFactory;
 import exercise.IBasic;
 import exercise.IPremium;
 import exercise.IPremiumPlus;
