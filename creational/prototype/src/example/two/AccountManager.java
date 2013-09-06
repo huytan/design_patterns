@@ -34,17 +34,17 @@ public class AccountManager {
 		UserAccount newSupervisor = factory.getSupervisor();
 		newSupervisor.setUserName("PKuchana");
 		newSupervisor.setPassword("Everest");
-		System.out.println(newSupervisor.getPermissions());
+		System.out.println(newSupervisor);
 
 		UserAccount anotherSupervisor = factory.getSupervisor();
 		anotherSupervisor.setUserName("SKuchana");
 		anotherSupervisor.setPassword("Everest");
-		System.out.println(anotherSupervisor.getPermissions());
+		System.out.println(anotherSupervisor);
 
 		UserAccount newAccountRep = factory.getAccountRep();
 		newAccountRep.setUserName("VKuchana");
 		newAccountRep.setPassword("Vishal");
-		System.out.println(newAccountRep.getPermissions());
+		System.out.println(newAccountRep);
 	}
 
 	public static Vector getPermissionsFromFile(String fileName) {

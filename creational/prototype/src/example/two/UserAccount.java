@@ -59,4 +59,7 @@ public class UserAccount implements Cloneable {
 		}
 	}
 
+	public String toString() {
+		return getUserName() + "::" + getPassword() + "::" + getPermissions();
+	}
 }
