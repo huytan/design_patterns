@@ -21,30 +21,43 @@ public class AccountManager {
 		Vector supervisorPermissions = getPermissionsFromFile("supervisor.txt");
 		UserAccount supervisor = new UserAccount();
 		supervisor.setPermissions(supervisorPermissions);
+		// exercise 1
+		// UserAccount supervisor = new UserAccount(supervisorPermissions);
+		// supervisor.getPermissions().setPermissions(supervisorPermissions);
 
 		Vector accountRepPermissions = getPermissionsFromFile("accountrep.txt");
 		UserAccount accountRep = new UserAccount();
 		accountRep.setPermissions(accountRepPermissions);
+		// exercise 1
+		// UserAccount accountRep = new UserAccount(accountRepPermissions);
+		// accountRep.getPermissions().setPermissions(accountRepPermissions);
 
 		AccountPrototypeFactory factory = new AccountPrototypeFactory(
-				supervisor, accountRep);
+				accountRep, supervisor);
 
 		/* Using protype objects to create other user accounts */
 
 		UserAccount newSupervisor = factory.getSupervisor();
 		newSupervisor.setUserName("PKuchana");
 		newSupervisor.setPassword("Everest");
-		System.out.println(newSupervisor);
+		// exercise 1
+		// Vector v = new Vector();
+		// v.add("print,read");
+		// newSupervisor.getPermissions().setPermissions(v);
+
+		System.out.println("newSupervisor :" + newSupervisor);
+
+		// System.out.println("orginal:" + supervisor);
 
 		UserAccount anotherSupervisor = factory.getSupervisor();
 		anotherSupervisor.setUserName("SKuchana");
 		anotherSupervisor.setPassword("Everest");
-		System.out.println(anotherSupervisor);
+		System.out.println("another:" + anotherSupervisor);
 
 		UserAccount newAccountRep = factory.getAccountRep();
 		newAccountRep.setUserName("VKuchana");
 		newAccountRep.setPassword("Vishal");
-		System.out.println(newAccountRep);
+		System.out.println("accReP:" + newAccountRep);
 	}
 
 	public static Vector getPermissionsFromFile(String fileName) {

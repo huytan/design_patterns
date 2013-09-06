@@ -23,8 +23,8 @@ public class ServerUI extends JFrame {
 	public static final String EXIT = "Exit";
 
 	private JPanel contentPane;
-	private DefaultListModel<String> dlm;
-	private JList<String> lst;
+	private DefaultListModel dlm;
+	private JList lst;
 	JLabel lblMessage;
 	JButton btnStart;
 	JButton btnStop;

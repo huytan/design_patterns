@@ -1,5 +1,7 @@
 package example.two;
 
+
+
 import java.util.Vector;
 
 public class UserAccount implements Cloneable {
@@ -7,7 +9,10 @@ public class UserAccount implements Cloneable {
 	private String password;
 	private String fname;
 	private String lname;
-	private Vector permissions = new Vector();
+	private Vector permissions;
+
+	// exercise 1
+	// ListPermission permissions;
 
 	public String getUserName() {
 		return userName;
@@ -41,13 +46,11 @@ public class UserAccount implements Cloneable {
 		this.lname = lname;
 	}
 
-	public Vector getPermissions() {
-		return permissions;
-	}
-
-	public void setPermissions(Vector permissions) {
-		this.permissions = permissions;
-	}
+	// exercise 1
+	// public UserAccount(Vector v) {
+	// // TODO Auto-generated constructor stub
+	// permissions = new ListPermission(v);
+	// }
 
 	public Object clone() {
 		// shallow coppy
@@ -59,7 +62,26 @@ public class UserAccount implements Cloneable {
 		}
 	}
 
+	// exercise 1
+	// public ListPermission getPermissions() {
+	// return permissions;
+	// }
+
+	public void setPermissions(Vector rights) {
+		permissions = rights;
+	}
+
+	// public String toString() {
+	// return getUserName() + "::" + getPassword() + "::" +
+	// getPermissions().getPermission();
+	// }
 	public String toString() {
-		return getUserName() + "::" + getPassword() + "::" + getPermissions();
+		String str = "User: " + getUserName() + "\n" + "Permissions : \n";
+
+		for (int i = 0; i < permissions.size(); i++) {
+			str = str + (Permission) permissions.elementAt(i) + "\n";
+
+		}
+		return str;
 	}
 }

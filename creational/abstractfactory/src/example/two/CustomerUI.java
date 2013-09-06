@@ -26,7 +26,7 @@ public class CustomerUI extends JFrame {
 	public static final String EXIT = "Exit";
 
 	private JPanel contentPane;
-	private JComboBox<String> cbbConnectTo;
+	private JComboBox cbbConnectTo;
 	private JTextField txtFirstName;
 	private JTextField txtLastName;
 	private JTextField txtAddress;
