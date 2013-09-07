@@ -1,7 +1,7 @@
 package example.one;
 
 public abstract class HostingPlan implements Cloneable {
-	String name;
+	// String name;
 
 	public Object clone() {
 		// shallow copy
