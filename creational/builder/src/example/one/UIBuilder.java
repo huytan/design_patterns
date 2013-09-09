@@ -1,17 +1,19 @@
+package example.one;
+
 import javax.swing.JPanel;
 
 public abstract class UIBuilder {
-	protected JPanel searchUI;
+	JPanel searchUI;
 
-	// add necessary UI controls and initalize them
-	public abstract void addUIControls();
+	// add necessary UI controls and initialize them
+	public abstract void addUIcontrols();
 
 	public abstract void initialize();
 
-	// return the SELECT SQL command for the specified criteria
+	// return the SELECT sql command for the specified criteria
 	public abstract String getSQL();
 
-	// common to all concrete builders
+	// common to all concrete builders.
 	// returns the fully constructed search UI
 	public JPanel getSearchUI() {
 		return searchUI;
