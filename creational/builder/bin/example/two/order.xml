@@ -8,6 +8,14 @@
 			<ID>200</ID>
 			<Qty>2</Qty>
 		</Item>
+		<Item>
+			<ID>200</ID>
+			<Qty>2</Qty>
+		</Item>
+		<Item>
+			<ID>200</ID>
+			<Qty>2</Qty>
+		</Item>
 	</LineItems>
 	<ShippingAddress>
 		<Address1>101 Arrowhead Trail</Address1>

@@ -1,11 +1,17 @@
-package example.two;
+package example.two.builder;
+
+import example.two.Order;
+import example.two.OrderShoppingTest;
 
 public class NonCAOrdBuilder implements OrderBuilder {
-	Order inOrder = getOrder();
 
 	@Override
-	public boolean isValidOrder() {
+	public boolean isValidOrder(String a) {
 		// TODO Auto-generated method stub
+//		int amount = Integer.parseInt(a);
+//		if (amount > OrderShoppingTest.TOTAL_AMOUNT) {
+//			return true;
+//		}
 		return false;
 	}
 
@@ -18,13 +24,13 @@ public class NonCAOrdBuilder implements OrderBuilder {
 	@Override
 	public double calcShipping() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 2;
 	}
 
 	@Override
 	public double calcTax() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 0.15;
 	}
 
 	@Override

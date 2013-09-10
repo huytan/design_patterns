@@ -1,10 +1,12 @@
-package example.two;
+package example.two.builder;
 
-public class CAOrdBuilder implements OrderBuilder {
-	Order inOrder = getOrder();
+import example.two.Order;
+import example.two.OrderShoppingTest;
+
+public class OSOrdBuilder implements OrderBuilder {
 
 	@Override
-	public boolean isValidOrder() {
+	public boolean isValidOrder(String a) {
 		// TODO Auto-generated method stub
 
 		return false;
@@ -13,7 +15,6 @@ public class CAOrdBuilder implements OrderBuilder {
 	@Override
 	public void addItems() {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -25,7 +26,7 @@ public class CAOrdBuilder implements OrderBuilder {
 	@Override
 	public double calcTax() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 0.2;
 	}
 
 	@Override

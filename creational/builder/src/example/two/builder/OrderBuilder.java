@@ -1,9 +1,9 @@
-package example.two;
+package example.two.builder;
+
+import example.two.Order;
 
 public interface OrderBuilder {
 	Order order = new Order();
-
-	boolean isValidOrder();
 
 	void addItems();
 
@@ -12,4 +12,6 @@ public interface OrderBuilder {
 	double calcTax();
 
 	Order getOrder();
+
+	boolean isValidOrder(String a);
 }
