@@ -17,7 +17,9 @@ public class AppTest {
 		OrderDirector director = new OrderDirector(builder);
 		director.build();
 
-		builder.getOrder();
+		Object obj = builder.getOrder();
+
+		builder.buildOrder(obj);
 	}
 
 }

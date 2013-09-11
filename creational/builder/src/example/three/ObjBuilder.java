@@ -4,12 +4,6 @@ public class ObjBuilder implements OrderBuilder {
 	Order order1 = (Order) order;
 
 	@Override
-	public void buildOrder() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public String addHeader() {
 		// TODO Auto-generated method stub
 		return "Header Obj";
@@ -26,6 +20,12 @@ public class ObjBuilder implements OrderBuilder {
 		// TODO Auto-generated method stub
 
 		return order1;
+	}
+
+	@Override
+	public void buildOrder(Object object) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

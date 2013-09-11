@@ -30,17 +30,16 @@ public class Order {
 		this.items = items;
 	}
 
-	public Order(Vector items, double tax, double shipping) {
-		this.items = items;
-		this.tax = tax;
-		this.shipping = shipping;
-	}
-
 	public Order() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void save() {
+	public Order(Vector result) {
+		// TODO Auto-generated constructor stub
+		this.items = result;
+	}
 
+	public void save() {
+		
 	}
 }

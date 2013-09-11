@@ -9,7 +9,6 @@ public class OrderDirector {
 
 	public void build() {
 		builder.addHeader();
-		builder.buildOrder();
 		builder.addFooter();
 	}
 

@@ -3,12 +3,6 @@ package example.three;
 public class XMLBuilder implements OrderBuilder {
 
 	@Override
-	public void buildOrder() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public String addHeader() {
 		// TODO Auto-generated method stub
 		return "Header XML";
@@ -24,6 +18,12 @@ public class XMLBuilder implements OrderBuilder {
 	public Object getOrder() {
 		// TODO Auto-generated method stub
 		return order;
+	}
+
+	@Override
+	public void buildOrder(Object object) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

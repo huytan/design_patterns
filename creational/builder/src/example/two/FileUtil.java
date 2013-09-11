@@ -15,6 +15,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class FileUtil {
+	@SuppressWarnings("unchecked")
 	public Vector readFileXML(String file) {
 		Vector orderList = new Vector();
 		try {
@@ -25,30 +26,61 @@ public class FileUtil {
 
 			Document doc = dBuilder.parse(xmlFile);
 			doc.getDocumentElement().normalize();
-			// System.out.println("Root element : "
-			// + doc.getDocumentElement().getNodeName());
+			NodeList nList = null;
+			nList = doc.getElementsByTagName("Item");
 
-			NodeList nList = doc.getElementsByTagName("Item");
-			// System.out.println("-------------------------");
 			for (int temp = 0; temp < nList.getLength(); temp++) {
 				Node nNode = nList.item(temp);
-				//
-				// System.out
-				// .println("\nCurrent Element : " + nNode.getNodeName());
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 					Element eElement = (Element) nNode;
-					// System.out.println("Author : "
-					// + eElement.getElementsByTagName("ID").item(0)
-					// .getTextContent());
-					// System.out.println("Qty : "
-					// + eElement.getElementsByTagName("Qty").item(0)
-					// .getTextContent());
 					orderList.addElement(eElement.getElementsByTagName("ID")
 							.item(0).getTextContent());
 					orderList.addElement(eElement.getElementsByTagName("Qty")
 							.item(0).getTextContent());
 				}
 			}
+			nList = doc.getElementsByTagName("ShippingAddress");
+
+			for (int temp = 0; temp < nList.getLength(); temp++) {
+				Node nNode = nList.item(temp);
+				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+					Element eElement = (Element) nNode;
+					orderList.addElement(eElement
+							.getElementsByTagName("Address1").item(0)
+							.getTextContent());
+					orderList.addElement(eElement
+							.getElementsByTagName("Address2").item(0)
+							.getTextContent());
+					orderList.addElement(eElement.getElementsByTagName("City")
+							.item(0).getTextContent());
+					orderList.addElement(eElement.getElementsByTagName("State")
+							.item(0).getTextContent());
+					orderList.addElement(eElement.getElementsByTagName("Zip")
+							.item(0).getTextContent());
+				}
+			}
+
+			nList = doc.getElementsByTagName("BillingAddress");
+
+			for (int temp = 0; temp < nList.getLength(); temp++) {
+				Node nNode = nList.item(temp);
+				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+					Element eElement = (Element) nNode;
+					orderList.addElement(eElement
+							.getElementsByTagName("Address1").item(0)
+							.getTextContent());
+					orderList.addElement(eElement
+							.getElementsByTagName("Address2").item(0)
+							.getTextContent());
+					orderList.addElement(eElement.getElementsByTagName("City")
+							.item(0).getTextContent());
+					orderList.addElement(eElement.getElementsByTagName("State")
+							.item(0).getTextContent());
+					orderList.addElement(eElement.getElementsByTagName("Zip")
+							.item(0).getTextContent());
+				}
+			}
+
 			return orderList;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

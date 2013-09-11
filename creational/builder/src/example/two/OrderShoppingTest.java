@@ -26,12 +26,14 @@ public class OrderShoppingTest {
 		builder = factory.getOrderBuilder(OrderShoppingTest.OSO);
 		// configure the director with the builder
 		OrderDirector director = new OrderDirector(builder);
-		director.build(director.getResult().toString());
 		director.pasre(OrderShoppingTest.xmlFile);
+
+		director.build(director.getResult().toString());
 
 		Order order = builder.getOrder();
 		order.save();
-		// System.out.println(director.getResult().toString());
+
+		System.out.println(director.getResult().toString());
 
 	}
 }

@@ -14,8 +14,8 @@ public class OrderDirector {
 	}
 
 	public void pasre(String XMLData) {
-		// FileUtil util = new FileUtil();
-		// result = util.readFileXML(XMLData);
+		FileUtil util = new FileUtil();
+		result = util.readFileXML(XMLData);
 		// System.out.println(rerult);
 	}
 
@@ -24,9 +24,10 @@ public class OrderDirector {
 	}
 
 	public void build(String XMLData) {
+		builder.isValidOrder(XMLData);
 		builder.addItems();
 		builder.calcShipping();
 		builder.calcTax();
-		builder.isValidOrder(XMLData);
+		
 	}
 }
