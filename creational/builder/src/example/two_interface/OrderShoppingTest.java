@@ -2,11 +2,12 @@ package example.two_interface;
 
 import example.two_interface.builder.OrderBuilder;
 import example.two_interface.builder.OrderDirector;
+import example.two_interface.builder.SaxHandler;
 import example.two_interface.factory.BuilderFactory;
 
 public class OrderShoppingTest {
 
-	public static final String xmlFile = "../builder/src/example/two/order.xml";
+	public static final String xmlFile = "order.xml";
 	public static final String CAO = "California orders";
 	public static final String NONCAO = "Non-California orders";
 	public static final String OSO = "Overseas orders";
@@ -26,14 +27,18 @@ public class OrderShoppingTest {
 		builder = factory.getOrderBuilder(OrderShoppingTest.OSO);
 		// configure the director with the builder
 		OrderDirector director = new OrderDirector(builder);
-		director.pasre(OrderShoppingTest.xmlFile);
+		director.pasre("order.xml");
+		for (Order s : SaxHandler.listOrder) {
+			System.out.println("Ten sach:" + s.getItems());
 
-		director.build(director.getResult().toString());
+		}
 
-		Order order = builder.getOrder();
-		order.save();
+		// director.build(director.getResult().toString());
 
-		System.out.println(director.getResult().toString());
+		// Order order = builder.getOrder();
+		// order.save();
+		//
+		// System.out.println(director.getResult().toString());
 
 	}
 }
