@@ -1,4 +1,4 @@
-package example.one;
+package example.one_abstract;
 
 import java.util.Enumeration;
 import java.util.Vector;
@@ -29,7 +29,8 @@ public class DirComponent extends FileSystemComponent {
 		dirContents.add(fc);
 	}
 
-	FileSystemComponent getComponent(int location) throws CompositeException {
+	public FileSystemComponent getComponent(int location)
+			throws CompositeException {
 		return (FileSystemComponent) dirContents.elementAt(location);
 	}
 }

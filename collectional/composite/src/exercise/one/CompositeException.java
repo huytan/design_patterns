@@ -1,4 +1,4 @@
-package example.one;
+package exercise.one;
 
 public class CompositeException extends Exception {
 	public CompositeException(String msg) {

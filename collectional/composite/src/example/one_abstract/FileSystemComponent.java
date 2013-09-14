@@ -1,4 +1,4 @@
-package example.one;
+package example.one_abstract;
 
 public abstract class FileSystemComponent {
 
