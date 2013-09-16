@@ -3,7 +3,6 @@ package exercise.one;
 import java.util.Enumeration;
 import java.util.Vector;
 
-import exercise.SystemComponent;
 
 public class SubDomain extends SystemComponent {
 	Vector components = new Vector();

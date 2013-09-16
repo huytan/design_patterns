@@ -1,6 +1,5 @@
 package exercise.one;
 
-import exercise.SystemComponent;
 
 public class HTML extends SystemComponent {
 	String name;

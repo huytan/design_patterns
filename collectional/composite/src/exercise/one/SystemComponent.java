@@ -1,6 +1,5 @@
-package exercise;
+package exercise.one;
 
-import exercise.one.CompositeException;
 
 public abstract class SystemComponent {
 	String name;
