@@ -1,0 +1,35 @@
+<Authors>
+	<Author>
+		<Name>Auth_1</Name>
+		<Books>
+			<Book>
+				<Title>B1</Title>
+			</Book>
+			<Book>
+				<Title>B2</Title>
+			</Book>
+		</Books>
+	</Author>
+	<Author>
+		<Name>Auth_2</Name>
+		<Books>
+			<Book>
+				<Title>B3</Title>
+			</Book>
+			<Book>
+				<Title>B4</Title>
+			</Book>
+		</Books>
+	</Author>
+	<Author>
+		<Name>Auth_2</Name>
+		<Books>
+			<Book>
+				<Title>B3</Title>
+			</Book>
+			<Book>
+				<Title>B4</Title>
+			</Book>
+		</Books>
+	</Author>
+</Authors>
