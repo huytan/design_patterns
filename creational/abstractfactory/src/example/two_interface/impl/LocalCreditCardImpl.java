@@ -1,8 +1,8 @@
 package example.two_interface.impl;
 
-import example.two_interface.ICreditCard;
+import example.two_interface.CreditCard;
 
-public class LocalCreditCardImpl implements ICreditCard {
+public class LocalCreditCardImpl implements CreditCard {
 	private String cardType;
 	private String cardNumber;
 	private String cardExpDate;

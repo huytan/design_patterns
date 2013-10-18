@@ -2,9 +2,9 @@ package example.two_interface.factory;
 
 import java.rmi.RemoteException;
 
-import example.two_interface.IAccount;
-import example.two_interface.IAddress;
-import example.two_interface.ICreditCard;
+import example.two_interface.Account;
+import example.two_interface.Address;
+import example.two_interface.CreditCard;
 import example.two_interface.impl.RemoteAccountImpl;
 import example.two_interface.impl.RemoteAddressImpl;
 import example.two_interface.impl.RemoteCreditCardImpl;
@@ -25,19 +25,19 @@ public class RemoteCustomerFactory implements ICustomerFactory {
 	}
 
 	@Override
-	public IAddress getAddress() throws RemoteException {
+	public Address getAddress() throws RemoteException {
 		// TODO Auto-generated method stub
 		return new RemoteAddressImpl();
 	}
 
 	@Override
-	public IAccount getAccount() throws RemoteException {
+	public Account getAccount() throws RemoteException {
 		// TODO Auto-generated method stub
 		return new RemoteAccountImpl();
 	}
 
 	@Override
-	public ICreditCard getCreditCard() throws RemoteException {
+	public CreditCard getCreditCard() throws RemoteException {
 		// TODO Auto-generated method stub
 		return new RemoteCreditCardImpl();
 	}

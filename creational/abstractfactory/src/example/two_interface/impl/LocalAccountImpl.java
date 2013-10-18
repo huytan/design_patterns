@@ -1,8 +1,8 @@
 package example.two_interface.impl;
 
-import example.two_interface.IAccount;
+import example.two_interface.Account;
 
-public class LocalAccountImpl implements IAccount {
+public class LocalAccountImpl implements Account {
 	private String firstName;
 	private String lastName;
 

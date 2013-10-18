@@ -3,7 +3,7 @@ package example.two_interface;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
-public interface IAddress extends Remote {
+public interface Address extends Remote {
 	public boolean isValid() throws RemoteException;
 
 	public boolean save() throws RemoteException;

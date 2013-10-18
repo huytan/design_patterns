@@ -255,9 +255,9 @@ class ButtonHandlerClient implements ActionListener {
 		if (e.getActionCommand().equals(CustomerUI.SAVE)) {
 			String vhConnectTo = customerUI.getCbbConnectTo();
 			ICustomerFactory factory = CustomerUtil.getCustFactory(vhConnectTo);
-			IAccount account = null;
-			IAddress address = null;
-			ICreditCard credit = null;
+			Account account = null;
+			Address address = null;
+			CreditCard credit = null;
 			try {
 				account = factory.getAccount();
 				account.setFirstName(customerUI.getTxtFirstName());

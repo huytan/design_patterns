@@ -3,7 +3,7 @@ package example.two_interface;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
-public interface IAccount extends Remote {
+public interface Account extends Remote {
 	public boolean isValid() throws Exception;
 
 	public boolean save() throws Exception;

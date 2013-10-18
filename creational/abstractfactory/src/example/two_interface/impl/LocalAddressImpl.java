@@ -1,8 +1,8 @@
 package example.two_interface.impl;
 
-import example.two_interface.IAddress;
+import example.two_interface.Address;
 
-public class LocalAddressImpl implements IAddress {
+public class LocalAddressImpl implements Address {
 	private String address;
 	private String city;
 	private String state;

@@ -1,8 +1,8 @@
 package example.two_interface.factory;
 
-import example.two_interface.IAccount;
-import example.two_interface.IAddress;
-import example.two_interface.ICreditCard;
+import example.two_interface.Account;
+import example.two_interface.Address;
+import example.two_interface.CreditCard;
 import example.two_interface.impl.LocalAccountImpl;
 import example.two_interface.impl.LocalAddressImpl;
 import example.two_interface.impl.LocalCreditCardImpl;
@@ -21,19 +21,19 @@ public class LocalCustomerFactory implements ICustomerFactory {
 	}
 
 	@Override
-	public IAddress getAddress() {
+	public Address getAddress() {
 		// TODO Auto-generated method stub
 		return new LocalAddressImpl();
 	}
 
 	@Override
-	public IAccount getAccount() {
+	public Account getAccount() {
 		// TODO Auto-generated method stub
 		return new LocalAccountImpl();
 	}
 
 	@Override
-	public ICreditCard getCreditCard() {
+	public CreditCard getCreditCard() {
 		// TODO Auto-generated method stub
 		return new LocalCreditCardImpl();
 	}

@@ -3,9 +3,9 @@ package example.two_interface.impl;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-import example.two_interface.IAddress;
+import example.two_interface.Address;
 
-public class RemoteAddressImpl extends UnicastRemoteObject implements IAddress {
+public class RemoteAddressImpl extends UnicastRemoteObject implements Address {
 	private String address;
 	private String city;
 	private String state;

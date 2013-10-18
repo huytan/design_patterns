@@ -3,9 +3,9 @@ package example.two_interface.impl;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-import example.two_interface.IAccount;
+import example.two_interface.Account;
 
-public class RemoteAccountImpl extends UnicastRemoteObject implements IAccount {
+public class RemoteAccountImpl extends UnicastRemoteObject implements Account {
 	private String firstName;
 	private String lastName;
 

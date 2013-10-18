@@ -2,15 +2,15 @@ package example.two_interface.factory;
 
 import java.rmi.RemoteException;
 
-import example.two_interface.IAccount;
-import example.two_interface.IAddress;
-import example.two_interface.ICreditCard;
+import example.two_interface.Account;
+import example.two_interface.Address;
+import example.two_interface.CreditCard;
 
 public interface ICustomerFactory {
-	public IAddress getAddress() throws RemoteException;
+	public Address getAddress() throws RemoteException;
 
-	public IAccount getAccount() throws RemoteException;
+	public Account getAccount() throws RemoteException;
 
-	public ICreditCard getCreditCard() throws RemoteException;
+	public CreditCard getCreditCard() throws RemoteException;
 
 }

@@ -3,10 +3,10 @@ package example.two_interface.impl;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-import example.two_interface.ICreditCard;
+import example.two_interface.CreditCard;
 
 public class RemoteCreditCardImpl extends UnicastRemoteObject implements
-		ICreditCard {
+		CreditCard {
 	private String cardType;
 	private String cardNumber;
 	private String cardExpDate;
