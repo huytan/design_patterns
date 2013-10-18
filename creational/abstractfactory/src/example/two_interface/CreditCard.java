@@ -4,7 +4,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 public interface CreditCard extends Remote {
-	public boolean isValid() throws Exception;
+	public boolean isValid() throws RemoteException;
 
 	public boolean save() throws RemoteException;
 
@@ -13,6 +13,7 @@ public interface CreditCard extends Remote {
 	public String getCardNumber() throws RemoteException;
 
 	public String getCardExpDate() throws RemoteException;
+
 	public void setCardType(String cardType) throws RemoteException;
 
 	public void setCardNumber(String cardNumber) throws RemoteException;

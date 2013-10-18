@@ -18,10 +18,9 @@ public class RemoteCreditCardImpl extends UnicastRemoteObject implements
 		this.cardExpDate = cardExpDate;
 	}
 
-	 public RemoteCreditCardImpl() throws RemoteException {
-	 // TODO Auto-generated constructor stub
-	 }
-
+	public RemoteCreditCardImpl() throws RemoteException {
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public boolean isValid() {

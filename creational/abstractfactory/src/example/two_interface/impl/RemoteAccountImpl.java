@@ -31,7 +31,7 @@ public class RemoteAccountImpl extends UnicastRemoteObject implements Account {
 				+ getLastName();
 		if (isValid()) {
 			FileUtil fUtil = new FileUtil();
-			return fUtil.writeToFile(ContantDataManager.ACOUNT_FILE, dataLine,
+			return fUtil.writeToFile(ContantDataManager.REMOTE_ACOUNT_FILE, dataLine,
 					true, true);
 
 		}

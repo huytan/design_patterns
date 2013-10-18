@@ -3,6 +3,10 @@ package example.two_interface;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -15,6 +19,7 @@ import javax.swing.border.EmptyBorder;
 import example.two_interface.factory.CustomerUtil;
 import example.two_interface.factory.ICustomerFactory;
 import example.two_interface.factory.LocalCustomerFactory;
+import example.two_interface.server.ServerRMI;
 
 import javax.swing.JTabbedPane;
 
@@ -43,7 +48,6 @@ public class CustomerUI extends JFrame {
 	private JTextField txtCardType;
 	private JButton btnSave;
 	private JButton btnExit;
-	private ServerUI serverUI;
 
 	/**
 	 * Launch the application.
@@ -59,11 +63,6 @@ public class CustomerUI extends JFrame {
 				}
 			}
 		});
-	}
-
-	public CustomerUI(ServerUI serverUI) {
-		// TODO Auto-generated constructor stub
-		this.serverUI = serverUI;
 	}
 
 	/**
@@ -184,13 +183,6 @@ public class CustomerUI extends JFrame {
 
 	}
 
-	public ServerUI getServerUI() {
-		if (serverUI == null) {
-			serverUI = new ServerUI();
-		}
-		return serverUI;
-	}
-
 	public String getCbbConnectTo() {
 		return (String) cbbConnectTo.getSelectedItem();
 	}
@@ -230,16 +222,10 @@ public class CustomerUI extends JFrame {
 
 class ButtonHandlerClient implements ActionListener {
 	CustomerUI customerUI;
-	ServerUI serverUI;
 
 	public ButtonHandlerClient(CustomerUI customerUI) {
 		// TODO Auto-generated constructor stub
 		this.customerUI = customerUI;
-	}
-
-	public ButtonHandlerClient(ServerUI serverUI) {
-		// TODO Auto-generated constructor stub
-		this.serverUI = serverUI;
 	}
 
 	public ButtonHandlerClient() {
@@ -253,11 +239,12 @@ class ButtonHandlerClient implements ActionListener {
 			System.exit(1);
 		}
 		if (e.getActionCommand().equals(CustomerUI.SAVE)) {
+
 			String vhConnectTo = customerUI.getCbbConnectTo();
 			ICustomerFactory factory = CustomerUtil.getCustFactory(vhConnectTo);
 			Account account = null;
 			Address address = null;
-			CreditCard credit = null;
+			CreditCard creadit = null;
 			try {
 				account = factory.getAccount();
 				account.setFirstName(customerUI.getTxtFirstName());
@@ -266,29 +253,46 @@ class ButtonHandlerClient implements ActionListener {
 				address.setAddress(customerUI.getTxtAddress());
 				address.setCity(customerUI.getTxtCity());
 				address.setState(customerUI.getTxtState());
-				credit = factory.getCreditCard();
-				credit.setCardType(customerUI.getTxtCardType());
-				credit.setCardNumber(customerUI.getTxtCardNumber());
-				credit.setCardExpDate(customerUI.getTxtCardExpdate());
-			} catch (Exception e1) {
-				// TODO: handle exception
-				e1.printStackTrace();
-			}
-			if (vhConnectTo.equalsIgnoreCase(CustomerUI.LOCAL)) {
-				try {
+				creadit = factory.getCreditCard();
+				creadit.setCardType(customerUI.getTxtCardType());
+				creadit.setCardNumber(customerUI.getTxtCardNumber());
+				creadit.setCardExpDate(customerUI.getTxtCardExpdate());
+				if (vhConnectTo.equalsIgnoreCase(CustomerUI.LOCAL)) {
 
-					if (account.save() && address.save() && credit.save()) {
+					if (saveAll(account, address, creadit)) {
 						System.out.println("Local OK");
 					}
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				} else if (vhConnectTo.equalsIgnoreCase(CustomerUI.REMOTE)) {
 
-			} else if (vhConnectTo.equalsIgnoreCase(CustomerUI.REMOTE)) {
-				// customerUI.getServerUI().setVisible(true);
-				new ServerUI().setVisible(true);
+					ServerRMI server = ServerRMI.getInstance();
+					server.start();
+					Registry reg = LocateRegistry
+							.getRegistry("127.0.0.1", 1099);
+					account = (Account) reg.lookup("myAccount");
+					address = (Address) reg.lookup("myAddress");
+					creadit = (CreditCard) reg.lookup("myCard");
+
+					if (saveAll(account, address, creadit)) {
+						System.out.println("Remote OK");
+						server.stop();
+					}
+				}
+			} catch (Exception e1) {
+				e1.printStackTrace();
 			}
 		}
+	}
+
+	private boolean saveAll(Account account, Address address, CreditCard credit) {
+		try {
+			if (account.save() && address.save() && credit.save()) {
+				return true;
+			}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		return false;
 	}
 }

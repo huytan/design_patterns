@@ -4,15 +4,15 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 public interface Account extends Remote {
-	public boolean isValid() throws Exception;
+	public boolean isValid() throws RemoteException;
 
-	public boolean save() throws Exception;
+	public boolean save() throws RemoteException;
 
-	public String getFirstName() throws Exception;
+	public String getFirstName()throws RemoteException ;
 
-	public String getLastName() throws Exception;
+	public String getLastName() throws RemoteException;
 
-	public void setFirstName(String firstName) throws Exception;
+	public void setFirstName(String firstName) throws RemoteException;
 
-	public void setLastName(String lastName) throws Exception;
+	public void setLastName(String lastName) throws RemoteException;
 }
