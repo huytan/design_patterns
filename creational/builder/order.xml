@@ -2,20 +2,8 @@
 <Order>
 	<LineItems>
 		<Item>
-			<ID>100</ID>
+			<ID>110</ID>
 			<Qty>1</Qty>
-		</Item>
-		<Item>
-			<ID>200</ID>
-			<Qty>2</Qty>
-		</Item>
-		<Item>
-			<ID>200</ID>
-			<Qty>2</Qty>
-		</Item>
-		<Item>
-			<ID>200</ID>
-			<Qty>2</Qty>
 		</Item>
 	</LineItems>
 	<ShippingAddress>
