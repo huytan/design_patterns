@@ -17,7 +17,7 @@ public class Leaf implements IComponent {
 			spaces += " ";
 		}
 		System.out.println(String.format("%s<%s>", spaces, _name));
-		System.out.println(String.format("%s		%s", spaces, _innerText));
+		System.out.println(String.format("%s	%s", spaces, _innerText));
 		System.out.println(String.format("%s</%s>", spaces, _name));
 
 	}

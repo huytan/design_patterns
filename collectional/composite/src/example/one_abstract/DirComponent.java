@@ -1,6 +1,7 @@
 package example.one_abstract;
 
 import java.util.Enumeration;
+import java.util.Iterator;
 import java.util.Vector;
 
 public class DirComponent extends FileSystemComponent {
@@ -16,6 +17,7 @@ public class DirComponent extends FileSystemComponent {
 		// TODO Auto-generated method stub
 		long sizeOfAllFiles = 0;
 		Enumeration e = dirContents.elements();
+		
 		while (e.hasMoreElements()) {
 			FileSystemComponent component = (FileSystemComponent) e
 					.nextElement();
