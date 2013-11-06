@@ -1,10 +1,8 @@
-package example.one;
+package example.one.impl;
 
 import java.util.Vector;
 
-import example.one.impl.CaliforniaOrder;
-import example.one.impl.NonCaliforniaOrder;
-import example.one.impl.OverseaOrder;
+import example.one.VisitorInterface;
 
 public class OrderVisitor implements VisitorInterface {
 	// private Vector orderObjList;

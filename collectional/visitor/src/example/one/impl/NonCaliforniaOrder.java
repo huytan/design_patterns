@@ -1,7 +1,6 @@
 package example.one.impl;
 
 import example.one.Order;
-import example.one.OrderVisitor;
 
 public class NonCaliforniaOrder implements Order {
 

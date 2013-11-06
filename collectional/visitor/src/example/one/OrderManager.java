@@ -18,6 +18,7 @@ import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
 
 import example.one.impl.CaliforniaOrder;
 import example.one.impl.NonCaliforniaOrder;
+import example.one.impl.OrderVisitor;
 import example.one.impl.OverseaOrder;
 
 public class OrderManager extends JFrame {
