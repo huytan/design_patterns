@@ -1,0 +1,20 @@
+http://surguy.net/articles/visitor-with-reflection.xml
+
+--before
+It's very easy to add another Visitor, to act on your structure of objects in a different way, 
+but it's hard to add another type of cheese; 
+you have to go through all of your existing Visitors adding a "visit(Gorgonzola g)" method.
+
+So, the standard Visitor is very useful when you want to perform a number of different operations on one static set of objects, 
+but if the types of objects that you want to act on is changing, it's not so useful.
+
+-after
+When to use this implementation
+
+Although this code is more flexible, it's not suitable for all situations. The downsides are:
+
+Reflection is slow - so you're trading flexibility for speed.
+The code's more complicated; but the long getPolymorphicMethod can be implemented only once in an abstract Visitor superclass, from which actual Visitor implementations are subclassed.
+Note that in this sample code I'm throwing lots of exceptions; in practice you'd probably want to handle some of them.
+
+References

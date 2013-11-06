@@ -5,3 +5,5 @@ http://en.wikipedia.org/wiki/Singleton_pattern
 http://howtodoinjava.com/2012/10/22/singleton-design-pattern-in-java/
 
 2. Design and implement a database connection class as singleton.
+
+http://surguy.net/articles/communication-across-classloaders.xml
