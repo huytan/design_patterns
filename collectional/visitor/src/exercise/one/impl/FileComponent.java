@@ -1,10 +1,11 @@
 package exercise.one.impl;
 
 import exercise.one.Component;
+import exercise.one.CompositeException;
 import exercise.one.FileSystemComponent;
 import exercise.one.VisitorInterface;
 
-public class FileComponent extends FileSystemComponent implements Component {
+public class FileComponent extends FileSystemComponent {
 	private long size;
 
 	public FileComponent(String name, long size) {
@@ -12,14 +13,17 @@ public class FileComponent extends FileSystemComponent implements Component {
 		this.size = size;
 	}
 
-	@Override
-	public void accept(VisitorInterface v) {
-		v.visit(this);
-
+	public FileComponent() {
 	}
 
-	public long getSize() {
+	@Override
+	public long accept(VisitorInterface v) {
+		return v.visitFile(this);
+	}
+
+	@Override
+	public long getComponetSize() throws CompositeException {
+	
 		return size;
 	}
-
 }
