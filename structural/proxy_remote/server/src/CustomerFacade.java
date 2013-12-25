@@ -22,19 +22,6 @@ public class CustomerFacade extends UnicastRemoteObject implements CustomerIntr 
 		System.out.println("Server object created");
 	}
 
-	public static void main(String[] args) throws RemoteException,
-			AlreadyBoundException {
-
-		if (System.getSecurityManager() == null) {
-			System.setSecurityManager(new RMISecurityManager());
-		}
-
-		CustomerFacade customerFacade = new CustomerFacade();
-		Registry registry = LocateRegistry.createRegistry(Constant.RMI_PORT);
-		registry.bind(Constant.RMI_ID, customerFacade);
-		System.out.println("start is started");
-
-	}
 
 	// còn lỗi
 	/*

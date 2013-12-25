@@ -31,7 +31,7 @@ public class AccountManager extends JFrame {
 	private JButton btnExit;
 	private JComboBox cbbCardType;
 	public static final String EXIT = "Exit";
-	public static final String SAVE = "Validate & Save";
+	public static final String SAVE = "Save";
 	public static final String VISA = "Visa";
 	public static final String CREADIT_CARD = "Creadit card";
 
@@ -149,7 +149,7 @@ public class AccountManager extends JFrame {
 		txtResult.setBounds(120, 211, 262, 14);
 		contentPane.add(txtResult);
 
-		btnSave = new JButton("Validate & Save");
+		btnSave = new JButton(AccountManager.SAVE);
 		btnSave.setBounds(120, 239, 130, 23);
 		contentPane.add(btnSave);
 
@@ -158,8 +158,8 @@ public class AccountManager extends JFrame {
 		contentPane.add(btnExit);
 
 		ButtonHandler handler = new ButtonHandler(this);
-		btnExit.addActionListener(handler);
 		btnSave.addActionListener(handler);
+		btnExit.addActionListener(handler);
 
 	}
 
@@ -202,25 +202,27 @@ public class AccountManager extends JFrame {
 }
 
 class ButtonHandler implements ActionListener {
-	private AccountManager main;
+	AccountManager main;
 
-	public ButtonHandler(AccountManager main) {
-		this.main = main;
+	public ButtonHandler(AccountManager inMain) {
+		this.main = inMain;
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) {	
 		if (e.getActionCommand().equalsIgnoreCase(AccountManager.EXIT)) {
 			System.exit(0);
-		}
-		if (e.getActionCommand().equalsIgnoreCase(AccountManager.SAVE)) {
+		} else if (e.getActionCommand().equals(AccountManager.SAVE)) {
 			try {
 
-				Registry registry = LocateRegistry.getRegistry("localhost",
-						Constant.RMI_PORT);
-				CustomerIntr remote = (CustomerIntr) registry
-						.lookup(Constant.RMI_ID);
-				
+				/*
+				 * Registry registry = LocateRegistry.getRegistry("localhost",
+				 * Constant.RMI_PORT); CustomerIntr remote = (CustomerIntr)
+				 * registry .lookup(Constant.RMI_ID);
+				 */
+
+				CustomerIntr remote = Connect.getRemote();
+
 				// set data into fileds
 				remote.setFName(main.getTxtFName());
 				remote.setLName(main.getTxtLName());
