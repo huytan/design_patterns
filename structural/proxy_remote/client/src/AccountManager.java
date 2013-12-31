@@ -209,7 +209,8 @@ class ButtonHandler implements ActionListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {	
+	public void actionPerformed(ActionEvent e) {
+
 		if (e.getActionCommand().equalsIgnoreCase(AccountManager.EXIT)) {
 			System.exit(0);
 		} else if (e.getActionCommand().equals(AccountManager.SAVE)) {
@@ -221,19 +222,24 @@ class ButtonHandler implements ActionListener {
 				 * registry .lookup(Constant.RMI_ID);
 				 */
 
-				CustomerIntr remote = Connect.getRemote();
-
+				System.out.println("hello");
+				Connect connect = Connect.getConnect();
+				CustomerIntr facade = connect.getRemote();
+				
+				System.out.println("remote:" + facade.toString());
 				// set data into fileds
-				remote.setFName(main.getTxtFName());
-				remote.setLName(main.getTxtLName());
-				remote.setAddress(main.getTxtAddress());
-				remote.setCity(main.getTxtCity());
-				remote.setState(main.getTxtState());
-				remote.setCardType(main.getCbbCardType());
-				remote.setCardNumber(main.getTxtCardNumber());
-				remote.setCardExpDate(main.getTxtExpDate());
-				// call save method
-				remote.saveCustomerData();
+				/*
+				 * facade.setFName(main.getTxtFName());
+				 * facade.setLName(main.getTxtLName());
+				 * facade.setAddress(main.getTxtAddress());
+				 * facade.setCity(main.getTxtCity());
+				 * facade.setState(main.getTxtState());
+				 * facade.setCardType(main.getCbbCardType());
+				 * facade.setCardNumber(main.getTxtCardNumber());
+				 * facade.setCardExpDate(main.getTxtExpDate()); 
+				 * // call save method 
+				 * facade.saveCustomerData();
+				 */
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
