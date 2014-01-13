@@ -28,4 +28,11 @@ public class CreditCard {
 				+ cardExpDate;
 		return file.writeToFile(Constant.CREDITCARD_FILE, dataLine, true, true);
 	}
+	
+	public boolean save() {
+		FileUtil file = new FileUtil();
+		String dataLine =  cardType + ":" + cardNumber + ":"
+				+ cardExpDate;
+		return file.writeToFile(Constant.CREDITCARD_FILE, dataLine, true, true);
+	}
 }

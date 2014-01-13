@@ -17,6 +17,9 @@ public interface CustomerIntr extends Remote {
 	public void setCardNumber(String inCardNumber) throws RemoteException;
 
 	public void setCardExpDate(String inCardExpDate) throws RemoteException;
+	
+	public void setMessageError(String msg) throws RemoteException;
+	public String getMessageError() throws RemoteException;
 
 	public boolean saveCustomerData() throws RemoteException;
 }

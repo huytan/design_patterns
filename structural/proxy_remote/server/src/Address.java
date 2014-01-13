@@ -27,4 +27,11 @@ public class Address {
 		String dataLine = id + ":" + address + ":" + city + ":" + state;
 		return file.writeToFile(Constant.ADDRESS_FILE, dataLine, true, true);
 	}
+	
+
+	public boolean save() {
+		FileUtil file = new FileUtil();
+		String dataLine =  address + ":" + city + ":" + state;
+		return file.writeToFile(Constant.ADDRESS_FILE, dataLine, true, true);
+	}
 }

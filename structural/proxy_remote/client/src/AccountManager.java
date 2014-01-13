@@ -216,30 +216,36 @@ class ButtonHandler implements ActionListener {
 		} else if (e.getActionCommand().equals(AccountManager.SAVE)) {
 			try {
 
-				/*
-				 * Registry registry = LocateRegistry.getRegistry("localhost",
-				 * Constant.RMI_PORT); CustomerIntr remote = (CustomerIntr)
-				 * registry .lookup(Constant.RMI_ID);
-				 */
+				Registry registry = LocateRegistry.getRegistry("localhost",
+						Constant.RMI_PORT);
+				CustomerIntr facade = (CustomerIntr) registry
+						.lookup(Constant.RMI_ID);
 
-				System.out.println("hello");
-				Connect connect = Connect.getConnect();
-				CustomerIntr facade = connect.getRemote();
-				
-				System.out.println("remote:" + facade.toString());
-				// set data into fileds
 				/*
-				 * facade.setFName(main.getTxtFName());
-				 * facade.setLName(main.getTxtLName());
-				 * facade.setAddress(main.getTxtAddress());
-				 * facade.setCity(main.getTxtCity());
-				 * facade.setState(main.getTxtState());
-				 * facade.setCardType(main.getCbbCardType());
-				 * facade.setCardNumber(main.getTxtCardNumber());
-				 * facade.setCardExpDate(main.getTxtExpDate()); 
-				 * // call save method 
-				 * facade.saveCustomerData();
+				 * System.out.println("hello"); Connect connect =
+				 * Connect.getConnect(); CustomerIntr facade =
+				 * connect.getRemote();
+				 * 
+				 * System.out.println("remote:" + facade.toString());
 				 */
+				// set data into fileds
+
+				facade.setFName(main.getTxtFName());
+				facade.setLName(main.getTxtLName());
+				facade.setAddress(main.getTxtAddress());
+				facade.setCity(main.getTxtCity());
+				facade.setState(main.getTxtState());
+				facade.setCardType(main.getCbbCardType());
+				facade.setCardNumber(main.getTxtCardNumber());
+				facade.setCardExpDate(main.getTxtExpDate());
+				// call save method
+				boolean result = facade.saveCustomerData();
+
+				if (result != true) {
+					String msgError = facade.getMessageError();
+					main.setTxtResult(msgError);
+				}
+
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
