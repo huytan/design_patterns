@@ -22,7 +22,7 @@ public class Address {
 		return true;
 	}
 
-	public boolean save(long id) {
+	public boolean save(String id) {
 		FileUtil file = new FileUtil();
 		String dataLine = id + ":" + address + ":" + city + ":" + state;
 		return file.writeToFile(Constant.ADDRESS_FILE, dataLine, true, true);

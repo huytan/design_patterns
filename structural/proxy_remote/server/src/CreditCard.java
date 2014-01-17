@@ -22,7 +22,7 @@ public class CreditCard {
 		return true;
 	}
 
-	public boolean save(long id) {
+	public boolean save(String id) {
 		FileUtil file = new FileUtil();
 		String dataLine = id + ":" + cardType + ":" + cardNumber + ":"
 				+ cardExpDate;

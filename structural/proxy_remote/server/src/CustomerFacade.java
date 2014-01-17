@@ -105,12 +105,12 @@ public class CustomerFacade extends UnicastRemoteObject implements CustomerIntr 
 		objAddress = new Address(address, city, state);
 		if (objAddress.isValid() == false) {
 			validData = false;
-			errorMessage = "Invalid Address/City/State";
+			setMessageError("Invalid Address/City/State");
 		}
 		objCreditCard = new CreditCard(cardType, cardNumber, cardExpDate);
 		if (objCreditCard.isValid() == false) {
 			validData = false;
-			errorMessage = "Invalid Card Type/Card Number/Card Expdate";
+			setMessageError("Invalid Card Type/Card Number/Card Expdate");
 		}
 		if (!validData) {
 			System.out.println(errorMessage);
@@ -118,26 +118,25 @@ public class CustomerFacade extends UnicastRemoteObject implements CustomerIntr 
 		}
 		// get id
 		UUID number = UUID.randomUUID();
-	//	long id = Long.parseLong(number.toString());
+		String id = number.toString();
+		// long id = Long.parseLong(number.toString());
 
-//		if (objAccount.save(id) && objAddress.save(id)
-//				&& objCreditCard.save(id)) {
-//			return true;
-//		} else {
-//			return false;
-//		}
-		
-		if (objAccount.save() && objAddress.save()
-				&& objCreditCard.save()) {
+		if (objAccount.save(id) && objAddress.save(id)
+				&& objCreditCard.save(id)) {
 			return true;
 		} else {
 			return false;
 		}
 
+		/*
+		 * if (objAccount.save() && objAddress.save() && objCreditCard.save()) {
+		 * return true; } else { return false; }
+		 */
+
 	}
 
 	@Override
-	public void setMessageError(String msg) throws RemoteException {
+	public void setMessageError(String msg) {
 		errorMessage = msg;
 
 	}

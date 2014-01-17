@@ -1,3 +1,5 @@
+package exercise.one;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -16,7 +18,12 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 
-public class AccountManager extends JFrame {
+import one.AccountIntr;
+import one.AddressIntr;
+import one.Constant;
+import one.CreditCardIntr;
+
+public class AccountManager_One extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtFName;
@@ -47,7 +54,7 @@ public class AccountManager extends JFrame {
 						System.setSecurityManager(new RMISecurityManager());
 
 					}
-					AccountManager frame = new AccountManager();
+					AccountManager_One frame = new AccountManager_One();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -59,7 +66,7 @@ public class AccountManager extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AccountManager() {
+	public AccountManager_One() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 307);
 		setTitle("Proxy remote");
@@ -131,8 +138,8 @@ public class AccountManager extends JFrame {
 
 		cbbCardType = new JComboBox();
 		cbbCardType.setBounds(120, 133, 103, 20);
-		cbbCardType.addItem(AccountManager.VISA);
-		cbbCardType.addItem(AccountManager.CREADIT_CARD);
+		cbbCardType.addItem(AccountManager_One.VISA);
+		cbbCardType.addItem(AccountManager_One.CREADIT_CARD);
 		contentPane.add(cbbCardType);
 
 		txtCardNumber = new JTextField();
@@ -149,7 +156,7 @@ public class AccountManager extends JFrame {
 		txtResult.setBounds(120, 211, 262, 14);
 		contentPane.add(txtResult);
 
-		btnSave = new JButton(AccountManager.SAVE);
+		btnSave = new JButton(AccountManager_One.SAVE);
 		btnSave.setBounds(120, 239, 130, 23);
 		contentPane.add(btnSave);
 
@@ -202,48 +209,59 @@ public class AccountManager extends JFrame {
 }
 
 class ButtonHandler implements ActionListener {
-	AccountManager main;
+	AccountManager_One main;
 
-	public ButtonHandler(AccountManager inMain) {
+	public ButtonHandler(AccountManager_One inMain) {
 		this.main = inMain;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		if (e.getActionCommand().equalsIgnoreCase(AccountManager.EXIT)) {
+		if (e.getActionCommand().equalsIgnoreCase(AccountManager_One.EXIT)) {
 			System.exit(0);
-		} else if (e.getActionCommand().equals(AccountManager.SAVE)) {
+		} else if (e.getActionCommand().equals(AccountManager_One.SAVE)) {
 			try {
 
 				Registry registry = LocateRegistry.getRegistry("localhost",
 						Constant.RMI_PORT);
-				CustomerIntr facade = (CustomerIntr) registry
+
+				AccountIntr facadeAccount = (AccountIntr) registry
 						.lookup(Constant.RMI_ID);
-
+				
+				AddressIntr facadeAddress = (AddressIntr) registry
+						.lookup(Constant.RMI_ID);
 				/*
-				 * System.out.println("hello"); Connect connect =
-				 * Connect.getConnect(); CustomerIntr facade =
-				 * connect.getRemote();
-				 * 
-				 * System.out.println("remote:" + facade.toString());
+				 * CreditCardIntr facadeCreditCard = (CreditCardIntr) registry
+				 * .lookup(Constant.RMI_ID);
 				 */
+
 				// set data into fileds
-
-				facade.setFName(main.getTxtFName());
-				facade.setLName(main.getTxtLName());
-				facade.setAddress(main.getTxtAddress());
-				facade.setCity(main.getTxtCity());
-				facade.setState(main.getTxtState());
-				facade.setCardType(main.getCbbCardType());
-				facade.setCardNumber(main.getTxtCardNumber());
-				facade.setCardExpDate(main.getTxtExpDate());
+				facadeAccount.setFName(main.getTxtFName());
+				facadeAccount.setLName(main.getTxtLName());
+				facadeAddress.setAddress(main.getTxtAddress());
+				facadeAddress.setCity(main.getTxtCity());
+				facadeAddress.setState(main.getTxtState());
+				// facadeCreditCard.setCardType(main.getCbbCardType());
+				// facadeCreditCard.setCardNumber(main.getTxtCardNumber());
+				// facadeCreditCard.setCardExpDate(main.getTxtExpDate());
 				// call save method
-				boolean result = facade.saveCustomerData();
-
-				if (result != true) {
-					String msgError = facade.getMessageError();
-					main.setTxtResult(msgError);
+				boolean resultAccount = facadeAccount.saveAccountData();
+				boolean resultAddress = facadeAddress.saveAddressData();
+				// boolean resultCreditCard = facadeCreditCard
+				// .saveCreditCardData();
+				// if (resultAccount != true || resultAddress != true
+				// || resultCreditCard != true) {
+				// String msgErrorAccount = facadeAccount.getMessageError();
+				// String msgErrorAddress = facadeAddress.getMessageError();
+				// String msgErrorCreditCard = facadeCreditCard
+				// .getMessageError();
+				// main.setTxtResult(msgErrorAccount + msgErrorAddress
+				// + msgErrorCreditCard);
+				if (resultAccount != true || resultAddress != true) {
+					String msgErrorAccount = facadeAccount.getMessageError();
+					String msgErrorAddress = facadeAddress.getMessageError();
+					main.setTxtResult(msgErrorAccount + msgErrorAddress);
 				} else {
 					main.setTxtResult("Saved");
 				}
