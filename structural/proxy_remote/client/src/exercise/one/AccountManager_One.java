@@ -22,6 +22,7 @@ import one.AccountIntr;
 import one.AddressIntr;
 import one.Constant;
 import one.CreditCardIntr;
+import one.MessageIntr;
 
 public class AccountManager_One extends JFrame {
 
@@ -68,7 +69,7 @@ public class AccountManager_One extends JFrame {
 	 */
 	public AccountManager_One() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 307);
+		setBounds(100, 100, 592, 307);
 		setTitle("Proxy remote");
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -153,7 +154,7 @@ public class AccountManager_One extends JFrame {
 		txtExpDate.setColumns(10);
 
 		txtResult = new JLabel("Please click on Validate & Save Button");
-		txtResult.setBounds(120, 211, 262, 14);
+		txtResult.setBounds(120, 211, 446, 14);
 		contentPane.add(txtResult);
 
 		btnSave = new JButton(AccountManager_One.SAVE);
@@ -227,14 +228,16 @@ class ButtonHandler implements ActionListener {
 						Constant.RMI_PORT);
 
 				AccountIntr facadeAccount = (AccountIntr) registry
-						.lookup(Constant.RMI_ID);
-				
+						.lookup(Constant.RMI_ID_ACCOUNT);
+
 				AddressIntr facadeAddress = (AddressIntr) registry
-						.lookup(Constant.RMI_ID);
-				/*
-				 * CreditCardIntr facadeCreditCard = (CreditCardIntr) registry
-				 * .lookup(Constant.RMI_ID);
-				 */
+						.lookup(Constant.RMI_ID_ADDRESS);
+
+				CreditCardIntr facadeCreditCard = (CreditCardIntr) registry
+						.lookup(Constant.RMI_ID_CREDITCARD);
+
+				MessageIntr facadeMessage = (MessageIntr) registry
+						.lookup("MessageError");
 
 				// set data into fileds
 				facadeAccount.setFName(main.getTxtFName());
@@ -242,28 +245,21 @@ class ButtonHandler implements ActionListener {
 				facadeAddress.setAddress(main.getTxtAddress());
 				facadeAddress.setCity(main.getTxtCity());
 				facadeAddress.setState(main.getTxtState());
-				// facadeCreditCard.setCardType(main.getCbbCardType());
-				// facadeCreditCard.setCardNumber(main.getTxtCardNumber());
-				// facadeCreditCard.setCardExpDate(main.getTxtExpDate());
-				// call save method
-				boolean resultAccount = facadeAccount.saveAccountData();
-				boolean resultAddress = facadeAddress.saveAddressData();
-				// boolean resultCreditCard = facadeCreditCard
-				// .saveCreditCardData();
-				// if (resultAccount != true || resultAddress != true
-				// || resultCreditCard != true) {
-				// String msgErrorAccount = facadeAccount.getMessageError();
-				// String msgErrorAddress = facadeAddress.getMessageError();
-				// String msgErrorCreditCard = facadeCreditCard
-				// .getMessageError();
-				// main.setTxtResult(msgErrorAccount + msgErrorAddress
-				// + msgErrorCreditCard);
-				if (resultAccount != true || resultAddress != true) {
-					String msgErrorAccount = facadeAccount.getMessageError();
-					String msgErrorAddress = facadeAddress.getMessageError();
-					main.setTxtResult(msgErrorAccount + msgErrorAddress);
+				facadeCreditCard.setCardType(main.getCbbCardType());
+				facadeCreditCard.setCardNumber(main.getTxtCardNumber());
+				facadeCreditCard.setCardExpDate(main.getTxtExpDate());
+
+				// check validate
+				if (facadeAccount.isValid() != true
+						|| facadeAddress.isValid() != true
+						|| facadeCreditCard.isValid() != true) {
+					String msg = facadeMessage.getMessageError();
+					main.setTxtResult(msg);
 				} else {
-					main.setTxtResult("Saved");
+					// call save method
+					facadeAccount.saveAccountData();
+					facadeAddress.saveAddressData();
+					facadeCreditCard.saveCreditCardData();
 				}
 
 			} catch (Exception e1) {

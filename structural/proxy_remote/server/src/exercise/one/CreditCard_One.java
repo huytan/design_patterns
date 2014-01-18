@@ -12,10 +12,11 @@ public class CreditCard_One extends UnicastRemoteObject implements
 	private String cardType;
 	private String cardNumber;
 	private String cardExpDate;
-	private String msgError;
+	private MessageError messageError;
 
 	public CreditCard_One() throws RemoteException {
-		// TODO Auto-generated constructor stub
+		messageError = MessageError.getInstance();
+		System.out.println("CreditCard object created");
 	}
 
 	// public CreditCard_One(String cardType, String cardNumber, String
@@ -26,17 +27,20 @@ public class CreditCard_One extends UnicastRemoteObject implements
 	// this.cardExpDate = cardExpDate;
 	// }
 
-	public boolean isValid() {
-		if (cardType.equalsIgnoreCase("")) {
-			return false;
+	public boolean isValid() throws RemoteException {
+		// if (!cardType.equalsIgnoreCase("")) {
+		// return true;
+		// }
+		if (!cardNumber.equalsIgnoreCase("")) {
+			System.out.println("cardnumber");
+			return true;
 		}
-		if (cardNumber.equalsIgnoreCase("")) {
-			return false;
+		if (!cardExpDate.equalsIgnoreCase("")) {
+			return true;
 		}
-		if (cardExpDate.equalsIgnoreCase("")) {
-			return false;
-		}
-		return true;
+		setMessageError("Invalid Card Type/Card Number/Card Expdate");
+		System.out.println(messageError.getMessageError());
+		return false;
 	}
 
 	public boolean save(String id) {
@@ -65,34 +69,25 @@ public class CreditCard_One extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public void setCardExpDate(String inCardExpDate) throws RemoteException {
+	public void setCardExpDate(String inCardExpDate) throws RemoteException{
 		// TODO Auto-generated method stub
 		cardExpDate = inCardExpDate;
 	}
 
 	@Override
-	public void setMessageError(String msg) {
-		msgError = msg;
-
+	public void setMessageError(String msg) throws RemoteException {
+		messageError.setMessageError(msg);
 	}
 
 	@Override
 	public String getMessageError() throws RemoteException {
 		// TODO Auto-generated method stub
-		return msgError;
+		return messageError.getMessageError();
 	}
 
 	@Override
 	public boolean saveCreditCardData() throws RemoteException {
-		boolean validData = true;
-		if (isValid() == false) {
-			validData = false;
-			setMessageError("Invalid Card Type/Card Number/Card Expdate");
-		}
-		if (!validData) {
-			System.out.println(msgError);
-			return false;
-		}// get id
+		// get id
 		UUID number = UUID.randomUUID();
 		String id = number.toString();
 		if (save(id)) {

@@ -13,5 +13,7 @@ public interface AccountIntr extends Remote {
 	public String getMessageError() throws RemoteException;
 
 	public boolean saveAccountData() throws RemoteException;
+	
+	public boolean isValid() throws RemoteException;
 
 }

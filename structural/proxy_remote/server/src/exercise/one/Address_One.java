@@ -11,10 +11,11 @@ public class Address_One extends UnicastRemoteObject implements AddressIntr {
 	private String address;
 	private String city;
 	private String state;
-	private String msgError;
+	private MessageError messageError;
 
 	public Address_One() throws RemoteException {
-		// TODO Auto-generated constructor stub
+		messageError = MessageError.getInstance();
+		System.out.println("Address object created");
 	}
 
 	// public Address_One(String address, String city, String state)
@@ -24,17 +25,19 @@ public class Address_One extends UnicastRemoteObject implements AddressIntr {
 	// this.state = state;
 	// }
 
-	public boolean isValid() {
-		if (address.equalsIgnoreCase("")) {
-			return false;
+	public boolean isValid() throws RemoteException {
+		if (!address.equalsIgnoreCase("")) {
+			return true;
 		}
-		if (city.equalsIgnoreCase("")) {
-			return false;
+		if (!city.equalsIgnoreCase("")) {
+			return true;
 		}
-		if (state.equalsIgnoreCase("")) {
-			return false;
+		if (!state.equalsIgnoreCase("")) {
+			return true;
 		}
-		return true;
+		setMessageError("Invalid Address/City/State");
+		System.out.println(messageError.getMessageError());
+		return false;
 	}
 
 	public boolean save(String id) {
@@ -67,28 +70,20 @@ public class Address_One extends UnicastRemoteObject implements AddressIntr {
 	}
 
 	@Override
-	public void setMessageError(String msg) {
-		msgError = msg;
+	public void setMessageError(String msg) throws RemoteException {
+		messageError.setMessageError(msg);
 
 	}
 
 	@Override
 	public String getMessageError() throws RemoteException {
 		// TODO Auto-generated method stub
-		return msgError;
+		return messageError.getMessageError();
 	}
 
 	@Override
 	public boolean saveAddressData() throws RemoteException {
-		boolean validData = true;
-		if (isValid() == false) {
-			validData = false;
-			setMessageError("Invalid Address/City/State");
-		}
-		if (!validData) {
-			System.out.println(msgError);
-			return false;
-		}// get id
+		// get id
 		UUID number = UUID.randomUUID();
 		String id = number.toString();
 		if (save(id)) {

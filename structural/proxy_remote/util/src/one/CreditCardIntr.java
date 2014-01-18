@@ -16,4 +16,6 @@ public interface CreditCardIntr extends Remote {
 	public String getMessageError() throws RemoteException;
 
 	public boolean saveCreditCardData() throws RemoteException;
+
+	public boolean isValid() throws RemoteException;
 }

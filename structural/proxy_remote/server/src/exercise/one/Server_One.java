@@ -20,12 +20,14 @@ public class Server_One {
 		Account_One account_One = new Account_One();
 		Address_One address_One = new Address_One();
 		CreditCard_One card_One = new CreditCard_One();
+		MessageError error = MessageError.getInstance();
 
 		Registry registry = LocateRegistry.createRegistry(Constant.RMI_PORT);
-		registry.bind(Constant.RMI_ID, account_One);
-		registry.rebind(Constant.RMI_ID, address_One);
-		/*	registry.bind(Constant.RMI_ID, card_One);*/
-
+		registry.bind(Constant.RMI_ID_ACCOUNT, account_One);
+		registry.bind(Constant.RMI_ID_ADDRESS, address_One);
+		registry.bind(Constant.RMI_ID_CREDITCARD, card_One);
+		registry.bind("MessageError", error);
+		
 		System.out.println("Server one is started");
 
 	}

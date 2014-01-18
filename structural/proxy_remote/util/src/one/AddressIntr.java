@@ -14,4 +14,6 @@ public interface AddressIntr extends Remote {
 	public String getMessageError() throws RemoteException;
 
 	public boolean saveAddressData() throws RemoteException;
+	
+	public boolean isValid() throws RemoteException;
 }

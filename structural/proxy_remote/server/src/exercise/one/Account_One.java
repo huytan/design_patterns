@@ -10,11 +10,11 @@ public class Account_One extends UnicastRemoteObject implements one.AccountIntr 
 
 	private String fname;
 	private String lname;
-	private String msgError;
+	private MessageError messageError;
 
 	public Account_One() throws RemoteException {
 		// TODO Auto-generated constructor stub
-		super();
+		messageError = MessageError.getInstance();
 		System.out.println("Account object created");
 	}
 
@@ -24,14 +24,16 @@ public class Account_One extends UnicastRemoteObject implements one.AccountIntr 
 		this.lname = lname;
 	}
 
-	public boolean isValid() {
-		if (fname.equalsIgnoreCase("")) {
-			return false;
+	public boolean isValid() throws RemoteException {
+		if (!fname.equalsIgnoreCase("")) {
+			return true;
 		}
-		if (lname.equalsIgnoreCase("")) {
-			return false;
+		if (!lname.equalsIgnoreCase("")) {
+			return true;
 		}
-		return true;
+		setMessageError("Invalid FirstName/LastName");
+		System.out.println(messageError.getMessageError());
+		return false;
 	}
 
 	public boolean save(String id) {
@@ -59,29 +61,21 @@ public class Account_One extends UnicastRemoteObject implements one.AccountIntr 
 	}
 
 	@Override
-	public void setMessageError(String msg) {
-		msgError = msg;
+	public void setMessageError(String msg) throws RemoteException {
+		messageError.setMessageError(msg);
 	}
 
 	@Override
 	public String getMessageError() throws RemoteException {
 		// TODO Auto-generated method stub
-		return msgError;
+		return messageError.getMessageError();
 	}
 
 	@Override
 	public boolean saveAccountData() throws RemoteException {
 		// / new Account_One(fname, lname);
-		boolean validData = true;
 
-		if (isValid() == false) {
-			validData = false;
-			setMessageError("Invalid FirstName/LastName");
-		}
-		if (!validData) {
-			System.out.println(msgError);
-			return false;
-		}// get id
+		// get id
 		UUID number = UUID.randomUUID();
 		String id = number.toString();
 		if (save(id)) {
