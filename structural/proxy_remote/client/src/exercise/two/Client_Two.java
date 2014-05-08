@@ -15,8 +15,7 @@ public class Client_Two {
 		Registry registry = LocateRegistry.getRegistry("localhost",
 				Constant.RMI_PORT);
 
-		OrderIntr order = (OrderIntr) registry
-				.lookup(Constant.RMI_ID_ORDER);
+		OrderIntr order = (OrderIntr) registry.lookup(Constant.RMI_ID_ORDER);
 		order.placeOrder("OR123456");
 
 		System.out.println("Order processing completed");
